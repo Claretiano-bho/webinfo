@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Roboto:700i&display=swap" rel="stylesheet"> 
+<link href="./css/previsao.css" rel="stylesheet" type="text/css">
+</head>
+<body style="overflow-x:hidden;" >
+
+
+<div id="container" style="margin:auto;text-align: center;padding-left:10px;font-family: 'Roboto', sans-serif;font-size:30px;padding-top:50px;width: 550px;">	
+<h1>Belo Horizonte</h1>
+</br>
+<div id="demo" style="padding:0%;"></div>
+<script type="text/javascript">
+
+window.onload = function(){
+	loadXMLDoc();
+}
+
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  //xmlhttp.open("GET", "http://servicos.cptec.inpe.br/XML/cidade/222/previsao.xml", true);
+  xmlhttp.open("GET", "https://api.tutiempo.net/xml/?lan=pt&apid=4xE4zzz44az731a&lid=56899", true);
+  xmlhttp.send();
+}
+
+
+function myFunction(xml) {
+  var str;
+  var varData = [];
+  var a = [];
+  var c = [];
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table = "";
+  var maximo;  
+  //Variaveis de imagens
+  var dia_sol_entre_nuvens="https://www.wisecrop.com/public/uploads/images/0afd71b2b5724fe7037d5b712c048378.gif";
+  var dia_sol = "http://www.webinfo1.claretiano/propagandas/gifs/sol.jpg";
+  var dia_nublado ="http://www.webinfo1.claretiano/propagandas/gifs/13.gif";
+  var dia_chuva = "http://www.webinfo1.claretiano/propagandas/gifs/chuva.gif";  
+  var pancada_chuva ="http://www.webinfo1.claretiano/propagandas/gifs/pancada_chuva.gif";
+  var previsao;
+  var tempo;
+  var test_valor;
+  
+  
+ 
+  for(i=0;i<=3;i++){
+  varData= xmlDoc.getElementsByTagName("date")[i].childNodes[0].nodeValue;
+  varTempMax = xmlDoc.getElementsByTagName("temperature_max")[i].childNodes[0].nodeValue;
+  varTempMin = xmlDoc.getElementsByTagName("temperature_min")[i].childNodes[0].nodeValue;
+  varIcon = xmlDoc.getElementsByTagName("icon")[i].childNodes[0].nodeValue;
+  varUmidade = xmlDoc.getElementsByTagName("humidity")[i+1].childNodes[0].nodeValue;
+  varCopyright = xmlDoc.getElementsByTagName("copyright")[0].childNodes[0].nodeValue;
+  
+  var date = new Date(varData);
+  var dia = (date.getDay());
+  var semana  = new Array(6);
+	semana[6]='Domingo';
+	semana[0]='Segunda-Feira';
+	semana[1]='Terça-Feira';
+	semana[2]='Quarta-Feira';
+	semana[3]='Quinta-Feira';
+	semana[4]='Sexta-Feira';
+	semana[5]='Sábado';
+	
+	c[i]= semana[dia];
+	console.log(semana[dia]);
+  //Seleção de icones 
+
+  if ( varIcon == '4' || varIcon == '6' ) { previsao = dia_nublado; }
+  if ( varIcon == '1' || varIcon == '2' ) { previsao = dia_sol; }
+  if ( varIcon == '33' || varIcon == '19' ) { previsao = pancada_chuva; }
+  if ( varIcon == '18' || varIcon == '22' ) { previsao = dia_chuva; }
+    
+      table +="<div id='line_mes' style='width:99%;margin:0px;padding:15px;text-align:center; padding-left:0px;font-family: 'Roboto', sans-serif;padding-top:60px;border-radius:20px 20px; position: relative;'>"+c[i]+"</div><div id='box_tempo'><div id='box_dir'><img src="+ previsao+" style='width: 3.3em; position: absolute; right: 20px'></div><div id='box_esq'>Máxima. "+varTempMax+"<code>&deg;</code></div><div id='box_esq' >Minima."+varTempMin+"<code>&deg;</code></div></br></div><p id='divUmidade' style='text-align:left;argin:auto;margin-bottom:50px;font-size:45px;'>Umidade do Ar: "+varUmidade+"%</p>";
+
+   }
+   document.getElementById("fontetempo").innerHTML= "<div id='fontetempo '>Fonte: "+varCopyright+" </div>";
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</div>
+<div>
+	<div id="fontetempo" style="margin:-10px; text-align:center;padding:5px;font-size:15px ;"></div>
+	<img src="./logocolegio.jpg" style="width:150px;padding-top:0px;position:relative;left:35%;" >
+</div>
+</body>
+</html>

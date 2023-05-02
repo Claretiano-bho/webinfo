@@ -1,0 +1,16 @@
+#relogio{
+    
+    font-size: 120px;
+    float: left;
+    position: absolute;
+    left:0px;
+    top:0px;
+    border-radius: 0px 10px 10px 0px;
+    padding: 5px;
+    padding-left:30px;
+    padding-right:30px;
+    font-family: roboto;
+    text-shadow:  1px 1px 1px #000;
+    color: #fff;
+    background-color: rgba(255,255,255,0.3);    
+}

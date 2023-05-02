@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Roboto:700i&display=swap" rel="stylesheet"> 
+<link href="./css/previsao.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<div id="container" style="padding-left:10px;font-family: 'Roboto', sans-serif;font-size:30px;padding-top:50px;">	
+<h1>Belo Horizonte</h1>
+</br>
+<div id="demo" style="padding:0%;"></div>
+<script type="text/javascript">
+
+window.onload = function(){
+	loadXMLDoc();
+}
+
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "http://servicos.cptec.inpe.br/XML/cidade/222/previsao.xml", true);
+  xmlhttp.send();
+}
+
+
+function myFunction(xml) {
+  var str;
+  var a = [];
+  var c = [];
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table = "";
+  var maximo;  
+  //Variaveis de imagens
+  var dia_sol_entre_nuvens="https://www.wisecrop.com/public/uploads/images/0afd71b2b5724fe7037d5b712c048378.gif";
+  var dia_sol = "http://www.webinfo1.claretiano/propagandas/gifs/sol.jpg";
+  var dia_nublado ="http://www.webinfo1.claretiano/propagandas/gifs/13.gif";
+  var dia_chuva = "http://www.webinfo1.claretiano/propagandas/gifs/chuva.gif";  
+  var pancada_chuva ="http://www.webinfo1.claretiano/propagandas/gifs/pancada_chuva.gif";
+  var previsao;
+  var tempo;
+  var test_valor;
+  
+  
+  var x = xmlDoc.getElementsByTagName("previsao");
+  for (i = 0; i <x.length; i++) { 
+    day = x[i].getElementsByTagName("dia")[0].childNodes[0].nodeValue;
+	var date = new Date(day);
+	var dia = date.getDay();
+	var semana  = new Array(6);
+	semana[6]='Domingo';
+	semana[0]='Segunda-Feira';
+	semana[1]='Terça-Feira';
+	semana[2]='Quarta-Feira';
+	semana[3]='Quinta-Feira';
+	semana[4]='Sexta-Feira';
+	semana[5]='Sábado';
+	
+	c[i]= semana[dia];
+	console.log(semana[dia]);
+	
+	
+	tempo = x[i].getElementsByTagName("tempo")[0].childNodes[0].nodeValue;
+	
+	if ( tempo == 'pn' || tempo == 'np' || tempo == 'n' || tempo == 'npn' || tempo == 'npp' || tempo == 'ppn' || tempo == 'ppm' ) { previsao = dia_nublado; }
+	
+	if ( tempo == 'ps' || tempo == 'cl' ) { previsao = dia_sol; }
+	
+	if ( tempo == 'c' || tempo == 'ci' || tempo == 'cm' || tempo == 'cn' || tempo  == 'pc' || tempo == 'cv' || tempo == 'ch'  ) { previsao = dia_chuva; }
+	 
+	if ( tempo == 'pt' || tempo == 'pct' || tempo == 'npt' || tempo == 'nct' || tempo == 'ct' || tempo == 'ppt' || tempo == 'np'   ) { previsao = pancada_chuva; }
+	
+	console.log();
+	table += "<div id='line_mes' style='width:90%; text-align:center; padding-left:10px;font-family: 'Roboto', sans-serif;padding-top:100px;border-radius:20px 20px;'>" +
+		c[i] + " </div><p><div id='box_tempo'><div id='box_esq'> " +
+		"Maxima - " +  x[i].getElementsByTagName("maxima")[0].childNodes[0].nodeValue + "&deg" + "</br> " + "Minima - " + x[i].getElementsByTagName("minima")[0].childNodes[0].nodeValue +"&deg" + "</div><div id='box_dir'><img src="+ previsao+" style='width:100px;'></div>" 
+    + " </br> " +
+	
+	"</div>"
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</div>
+<div>
+	<div id="fontetempo">Fonte: CPTEC/INPE </div>
+	<img src="./logocolegio.jpg" style="width:150px;padding-top:80px;position:relative;left:25%;" >
+</div>
+</body>
+</html>
