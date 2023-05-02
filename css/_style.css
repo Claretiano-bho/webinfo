@@ -1,26 +1,23 @@
-#container{
-	
-	padding-left:10px;
-	font-family: 'Roboto', sans-serif;
-	padding-top:50px;"
+#container {
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  padding-top: 50px;
 }
-.elementos{
-	background-color:#4169E1;
-	width:100px;
-	text-align:center;
-	padding-left:10px;
-	font-family: 'Roboto', sans-serif;
-	padding-top:100px;
-	border:1 px;
-	border-radius:3px;
-	
+.elementos {
+  background-color: #4169e1;
+  width: 100px;
+  text-align: center;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  padding-top: 100px;
+  border: 1 px;
+  border-radius: 3px;
 }
-#img_previsao{
-	width:40px;
+#img_previsao {
+  width: 40px;
 }
-#logo{
-	
-	width:100px;
-	padding-top:80px;
-	padding-left:20%;
+#logo {
+  width: 100px;
+  padding-top: 80px;
+  padding-left: 20%;
 }

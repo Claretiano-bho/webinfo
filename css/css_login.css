@@ -1,65 +1,57 @@
-body{
-    height: 400px;    
-    height: 100%;
- /**   background-image: url(../img/backgraound.jpg);**/
-    background-repeat: no-repeat;
-    background-size: cover;
-
+body {
+  height: 400px;
+  height: 100%;
+  /**   background-image: url(../img/backgraound.jpg);**/
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-h1{
-    
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    color: #DCDCDC;
+h1 {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  color: #dcdcdc;
 }
 
-#caixa{
-    padding-top: 0px;
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 270px;
-    width: 350px;
-    text-align: center;
-    border: 3px solid #fff;
-    background-color: white;
-    box-shadow: 10px 5px 10px black;
-    border-radius: 5px;
-
-    
+#caixa {
+  padding-top: 0px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 270px;
+  width: 350px;
+  text-align: center;
+  border: 3px solid #fff;
+  background-color: white;
+  box-shadow: 10px 5px 10px black;
+  border-radius: 5px;
 }
 
-#caixa label{
-    color: #6495ED;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    margin-right: 0%;
+#caixa label {
+  color: #6495ed;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  margin-right: 0%;
 }
-.entrada_dados{
-    margin-right:3px;
-    width: 80%;
-    background-color: white; 
-    border-bottom-color: black;
-    border-bottom-width: 1px;
-    border-top-width: 0px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    
+.entrada_dados {
+  margin-right: 3px;
+  width: 80%;
+  background-color: white;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
 }
-.botoes{
-    
-    background-color: 	#4169E1;
-    border: 0px solid;
-    margin-top: 20px;
-    width: 80%;
-    height: 20px;
-    border-radius: 5px;
-    font-family: 'arial';
-    color: #fff;
-    text-shadow: 2px 2px 2px black;
-    
+.botoes {
+  background-color: #4169e1;
+  border: 0px solid;
+  margin-top: 20px;
+  width: 80%;
+  height: 20px;
+  border-radius: 5px;
+  font-family: "arial";
+  color: #fff;
+  text-shadow: 2px 2px 2px black;
 }
-.botoes:hover{
-
-    background-color: #191970;
+.botoes:hover {
+  background-color: #191970;
 }

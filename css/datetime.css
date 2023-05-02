@@ -1,15 +1,15 @@
-#getdata{
-	        font-size: 120px;
-		float: right;
-		position: absolute;
-		right:15%;
-		top:0px;
-		border-radius: 10px 10px 10px 10px;
-		padding: 5px;
-		padding-left:30px;
-		padding-right:30px;
-		font-family: roboto;
-		text-shadow:  1px 1px 1px #000;
-		color: #fff;
-		background-color: rgba(249,249,249,0.2);
-																																																					                                                }
+#getdata {
+  font-size: 120px;
+  float: right;
+  position: absolute;
+  right: 15%;
+  top: 0px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: roboto;
+  text-shadow: 1px 1px 1px #000;
+  color: #fff;
+  background-color: rgba(249, 249, 249, 0.2);
+}
